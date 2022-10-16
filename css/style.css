@@ -1,3 +1,7 @@
+body {
+    background-color: #F6F6F7;
+}
+
 .web-title {
     color: #5D5FEF;
     font-size: 28px;
@@ -22,6 +26,14 @@
 .portal-section {
     border-bottom: 2px solid black;
 }
+
+.found {
+    color: #fff;
+    border: 1px solid black;
+    height: 50px;
+    width: 100%;
+}
+
 
 
 
