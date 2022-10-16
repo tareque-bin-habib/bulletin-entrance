@@ -1,13 +1,13 @@
 .web-title {
     color: #5D5FEF;
     font-size: 28px;
+    margin-left: 5%;
 }
 
 .news-blog {
     display: flex;
     justify-content: end;
     list-style: none;
-    color: #5D5FEF;
 }
 
 .news-blog ul {
@@ -16,7 +16,7 @@
 
 .news-blog a {
     text-decoration: none;
-
+    color: #5D5FEF;
 }
 
 
@@ -49,18 +49,18 @@
     }
 
     .news-blog a {
-        font-size: 17px;
+        font-size: 15px;
     }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 575px) {
     .web-title {
-        font-size: 35px;
+        font-size: 22px;
         text-align: center;
     }
 
     .news-blog a {
-        font-size: 25px;
+        font-size: 19px;
     }
 
     .news-blog {
