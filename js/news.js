@@ -1,3 +1,4 @@
+// CATEGORIES
 const loadCategories = () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     fetch(url)
@@ -18,6 +19,8 @@ const displayCategories = categories => {
         navContainer.appendChild(creatLi);
     })
 }
+
+// NEWS
 const loadNews = (id) => {
     toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
@@ -30,12 +33,12 @@ const displayNews = newses => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
     const foundContainer = document.getElementById('found-container');
-    foundContainer.innerText = `${newses.length} Items Found`;
+    foundContainer.innerText = `${newses.length} News Found`;
     if (newses.length === 0) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'No data Found!',
+            text: 'No News Found!',
         })
         toggleSpinner(false);
         newsContainer.innerHTML = '';
@@ -52,7 +55,7 @@ const displayNews = newses => {
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">${news.title
+                <h5 class="card-title fs-3">${news.title
             }</h5>
                 <p class="card-text pera-details">${news.details}</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -79,6 +82,7 @@ const displayNews = newses => {
     })
 }
 
+// SPINNER
 const toggleSpinner = isLoading => {
     const loader = document.getElementById('loader');
     if (isLoading === true) {
@@ -89,6 +93,7 @@ const toggleSpinner = isLoading => {
     }
 }
 
+// MODAL
 const loadModal = (id) => {
     // console.log(id)
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
