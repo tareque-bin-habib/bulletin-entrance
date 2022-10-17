@@ -24,12 +24,13 @@ body {
 }
 
 .portal-section {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid grey;
+
 }
 
 .found {
     color: #fff;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 50px;
     width: 100%;
 }
@@ -48,6 +49,11 @@ body {
     width: 20%;
 }
 
+/* .categories-section {
+    box-shadow: 20px 0px 40px black;
+    border-radius: 20px;
+} */
+
 
 
 
@@ -59,6 +65,10 @@ body {
 @media only screen and (max-width: 888px) {
     .web-title {
         font-size: 20px;
+    }
+
+    .trending {
+        display: none;
     }
 }
 
@@ -100,5 +110,9 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .Todays {
+        display: none;
     }
 }

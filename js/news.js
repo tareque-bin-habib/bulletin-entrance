@@ -26,6 +26,7 @@ const loadNews = (id) => {
         .then(data => displayNews(data.data))
 }
 const displayNews = newses => {
+    const sortData = newses.sort((a, b) => b.total_view - a.total_view)
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
     const foundContainer = document.getElementById('found-container');
@@ -40,8 +41,8 @@ const displayNews = newses => {
         newsContainer.innerHTML = '';
         return
     }
-    newses.forEach(news => {
-        console.log(news);
+    sortData.forEach(news => {
+        // console.log(news);
 
         const creatDiv = document.createElement('div');
         creatDiv.classList.add('row', 'card-margin');
@@ -64,7 +65,7 @@ const displayNews = newses => {
                     <iconify-icon icon="akar-icons:eye"></iconify-icon><span>${news.total_view ? news.total_view : 'No views Today'}</span>
                 </div>
                 <div class="mt-4">
-                    <button onclick="${loadModal(news._id)}" type="button" class="btn btn-white text-primary fs-4 fw-bold " data-bs-toggle="modal"        data-bs-target="#exampleModal">
+                    <button onclick="loadModal('${news._id}')" type="button" class="btn btn-white text-primary fs-4 fw-bold " data-bs-toggle="modal"        data-bs-target="#exampleModal">
                     <iconify-icon icon="akar-icons:arrow-right"></iconify-icon>
                     </button>
                 </div>
@@ -89,6 +90,7 @@ const toggleSpinner = isLoading => {
 }
 
 const loadModal = (id) => {
+    // console.log(id)
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
     fetch(url)
         .then(res => res.json())
@@ -112,4 +114,4 @@ loadNews(01);
 
 loadCategories();
 
-loadModal();
+// loadModal();
