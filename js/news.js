@@ -64,7 +64,7 @@ const displayNews = newses => {
                     <i class="fa-regular fa-eye"></i><span>1.5 M</span>
                 </div>
                 <div class="mt-4">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"        data-bs-target="#exampleModal">
+                    <button onclick="${loadModal(news._id)}" type="button" class="btn btn-primary" data-bs-toggle="modal"        data-bs-target="#exampleModal">
                     Show News
                     </button>
                 </div>
@@ -88,6 +88,29 @@ const toggleSpinner = isLoading => {
     }
 }
 
+const loadModal = (id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayModal(data.data[0]._id))
+}
+const displayModal = news => {
+    // console.log(news)
+    const displayContainer = document.getElementById('display-container');
+    displayContainer.innerHTML = `
+    <div class="card p-5 border-primary">
+    <img src="${news.image_url}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">${news.title}</h5>
+         <p class="card-text">${news.details
+        }</p>
+    </div>
+    </div>
+    `
+}
+
 loadNews(01);
 
 loadCategories();
+
+loadModal();
