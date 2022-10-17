@@ -61,7 +61,7 @@ const displayNews = newses => {
                     <img src="${news.author.img}" class="rounded-circle author-image mt-3" alt="..."><span class="ms-1 fs-5">${news.author.name}</span>
                 </div>
                 <div class="mt-4">
-                    <i class="fa-regular fa-eye"></i><span>1.5 M</span>
+                    <iconify-icon icon="akar-icons:eye"></iconify-icon><span>${news.total_view ? news.total_view : 'No news Today'}</span>
                 </div>
                 <div class="mt-4">
                     <button onclick="${loadModal(news._id)}" type="button" class="btn btn-primary" data-bs-toggle="modal"        data-bs-target="#exampleModal">
@@ -89,20 +89,21 @@ const toggleSpinner = isLoading => {
 }
 
 const loadModal = (id) => {
+    console.log(id)
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayModal(data.data[0]._id))
+        .then(data => displayModal(data?.data[0]))
 }
 const displayModal = news => {
-    // console.log(news)
+    console.log(news)
     const displayContainer = document.getElementById('display-container');
     displayContainer.innerHTML = `
     <div class="card p-5 border-primary">
-    <img src="${news.image_url}" class="card-img-top" alt="...">
+    <img src="${news?.image_url ? news?.image_url : ''}" class="card-img-top" alt="news-img">
     <div class="card-body">
-        <h5 class="card-title">${news.title}</h5>
-         <p class="card-text">${news.details
+        <h5 class="card-title">${news?.title}</h5>
+         <p class="card-text">${news?.details
         }</p>
     </div>
     </div>
