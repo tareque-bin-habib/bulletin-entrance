@@ -1,4 +1,4 @@
-// CATEGORIES
+// Categories Fetch
 const loadCategories = () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     fetch(url)
@@ -6,9 +6,9 @@ const loadCategories = () => {
         .then(data => displayCategories(data.data.news_category))
 }
 
+// Categories Display
 const displayCategories = categories => {
     categories.forEach(categorie => {
-        // console.log(categorie)
         const navContainer = document.getElementById('nav-container');
         const creatLi = document.createElement('li');
         creatLi.classList.add('nav-item');
@@ -20,7 +20,7 @@ const displayCategories = categories => {
     })
 }
 
-// NEWS
+// News Fetch
 const loadNews = (id) => {
     toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
@@ -28,6 +28,8 @@ const loadNews = (id) => {
         .then(res => res.json())
         .then(data => displayNews(data.data))
 }
+
+// Display News
 const displayNews = newses => {
     const sortData = newses.sort((a, b) => b.total_view - a.total_view)
     const newsContainer = document.getElementById('news-container');
@@ -45,8 +47,6 @@ const displayNews = newses => {
         return
     }
     sortData.forEach(news => {
-        // console.log(news);
-
         const creatDiv = document.createElement('div');
         creatDiv.classList.add('row', 'card-margin');
         creatDiv.innerHTML = `
@@ -82,7 +82,7 @@ const displayNews = newses => {
     })
 }
 
-// SPINNER
+// Spinner
 const toggleSpinner = isLoading => {
     const loader = document.getElementById('loader');
     if (isLoading === true) {
@@ -93,9 +93,8 @@ const toggleSpinner = isLoading => {
     }
 }
 
-// MODAL
+// Modal
 const loadModal = (id) => {
-    // console.log(id)
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
     fetch(url)
         .then(res => res.json())
@@ -118,5 +117,3 @@ const displayModal = news => {
 loadNews(01);
 
 loadCategories();
-
-// loadModal();
